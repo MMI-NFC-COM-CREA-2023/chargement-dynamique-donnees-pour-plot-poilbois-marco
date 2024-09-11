@@ -1,11 +1,10 @@
-#contenu1 {
-    height: 50px;
-    width: 200px;
+#contenu1, #contenu2 {
+    height: 1440px;
+    width: 1080px;
+}
+/* #contenu1 {
     background-color: salmon;
-}
-
-#contenu2 {
-    height: 50px;
-    width: 200px;
+} */
+/* #contenu2 {
     background-color: goldenrod;
-}
+} */
