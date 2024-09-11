@@ -7,36 +7,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="page1">Sous partie 1</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident ratione qui culpa, odio saepe deserunt hic quibusdam facere ut velit aperiam ullam tempora eaque architecto ipsum ea, voluptatem tempore. Ipsum.</p>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/sousPartie2.html">Second Graphique</a>
+    </nav>
+    <h1 id="page1">Gagnants des grands chelem entre 1967 et 2022 (ESM)</h1>
     <figure>
         <div id="contenu1"></div>
         <figcaption>
-            Lorem ipsum dolor sit amet, consectetur adipisicing.
-            
+            <legend>Découvrez les légendes du grand chelem au fil des décénies.</legend>
+            <script type="module">
+
+            import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+            const dataresponse = await fetch("./data.json");
+            const data = await dataresponse.json();
+            console.log(data);
+            const plot = Plot.plot(
+                {
+                    marginLeft: 150,
+                    x: { grid: true, label: "Années" },
+                    y: { label: "Gangnants" },
+                    color: { legend: true },
+                    marks: [
+                      Plot.dot(data, { x: "YEAR", y: "WINNER", stroke: "WINNER", tip: true })
+                    ]
+                }
+            );
+                document.getElementById("contenu1").appendChild(plot);
+            </script>    
         </figcaption>
     </figure>
-    <script type="module">
-
-        import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
-
-        const dataresponse = await fetch("./data.json");
-        const data = await dataresponse.json();
-        console.log(data);
-        const plot = Plot.plot(
-            {
-                title: "Gagnants des grands chelem entre 1967 et 2022",
-                subtitle: "Découvrez les légendes du grand chelem au fil des décénies",
-                marginLeft: 150,
-                x: { grid: true, label: "Années" },
-                y: { label: "Gangnants" },
-                color: { legend: true },
-                marks: [
-                  Plot.dot(data, { x: "YEAR", y: "WINNER", stroke: "WINNER", tip: true })
-                ]
-            }
-        );
-        document.getElementById("contenu1").appendChild(plot);
-    </script>
 </body>
 </html>

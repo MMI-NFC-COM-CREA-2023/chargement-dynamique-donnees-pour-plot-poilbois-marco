@@ -8,8 +8,9 @@
   </head>
   <body>
     <nav>
-        <a href="/sousPartie1.html">Sous partie 1</a>
-        <a href="/sousPartie2.html">Sous partie 2</a>
+        <a href="/">Accueil</a>
+        <a href="/sousPartie1.html">Premier Graphique</a>
+        <a href="/sousPartie2.html">Second Graphique</a>
     </nav>
 
     <div id="contenu1"></div>
@@ -21,7 +22,7 @@
       console.log(data);
 
       const plot = Plot.plot({
-        title: "Gagnants des grands chelem entre 1967 et 2022",
+        title: "Gagnants des grands chelem entre 1967 et 2022 (ESM)",
         subtitle: "Découvrez les légendes du grand chelem au fil des décénies",
         marginLeft: 150,
         x: { grid: true, label: "Années" },
@@ -49,7 +50,7 @@
         const data = await dataresponse.json();
 
         const plot = Plot.plot({
-          title: "Gagnants des grands chelem entre 1967 et 2022",
+          title: "Gagnants des grands chelem entre 1967 et 2022 (UMD)",
           subtitle:
             "Découvrez les légendes du grand chelem au fil des décénies",
           marginLeft: 150,

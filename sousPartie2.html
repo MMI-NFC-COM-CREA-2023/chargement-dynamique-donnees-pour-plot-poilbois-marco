@@ -7,36 +7,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="page2">Sous partie 2</h1>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis voluptas, explicabo magnam quasi facere quibusdam dolorem minus quidem non ratione molestias minima fugit, quos reiciendis fugiat unde maiores aperiam eum.</p>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/sousPartie1.html">Premier Graphique</a>
+    </nav>
+    <h1 id="page2">Gagnants des grands chelem entre 1967 et 2022 (UMD)</h1>
     <figure>
         <div id="contenu2"></div>
         <figcaption>
-            Lorem ipsum dolor sit amet, consectetur adipisicing.
+            <legend>Découvrez les légendes du grand chelem au fil des décénies.</legend>
+            <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+            <script>
+                async function faitAsync() {
+                    const dataresponse = await fetch("./data.json");
+                    const data = await dataresponse.json();
+                    const plot = Plot.plot(
+                        {
+                            marginLeft: 150,
+                            x: { grid: true, label: "Années" },
+                            y: { label: "Gangnants" },
+                            color: { legend: true },
+                            marks: [
+                              Plot.dot(data, { x: "YEAR", y: "WINNER", stroke: "WINNER", tip: true })
+                            ]
+                        });
+                        const div = document.getElementById("contenu2");
+                        div.append(plot);
+                }
+                faitAsync();
+            </script>
         </figcaption>
     </figure>
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
-    <script>
-        async function faitAsync() {
-            const dataresponse = await fetch("./data.json");
-            const data = await dataresponse.json();
-            const plot = Plot.plot(
-                {
-                    title: "Gagnants des grands chelem entre 1967 et 2022",
-                    subtitle: "Découvrez les légendes du grand chelem au fil des décénies",
-                    marginLeft: 150,
-                    x: { grid: true, label: "Années" },
-                    y: { label: "Gangnants" },
-                    color: { legend: true },
-                    marks: [
-                      Plot.dot(data, { x: "YEAR", y: "WINNER", stroke: "WINNER", tip: true })
-                    ]
-                });
-                const div = document.getElementById("contenu2");
-                div.append(plot);
-        }
-        faitAsync();
-    </script>
 </body>
 </html>

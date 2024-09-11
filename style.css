@@ -8,3 +8,23 @@
 /* #contenu2 {
     background-color: goldenrod;
 } */
+
+body {
+    padding-top: 70px;
+}
+
+nav {
+    background-color: black;
+    display: flex;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+nav a {
+    padding-left: 40px;
+    text-decoration: none;
+    color: white;
+}
